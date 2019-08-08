@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    tools {
+    	maven 'maven 3.6.1'
+    }
+    
+    stages {
+        stage('Build') {
+             steps {
+                echo ">> Building ..."
+                dir("worker"){
+                	sh 'mvn compile'
+                }
+            }   
+        }
+        /*
+        stage('Test') {
+             steps {
+                echo ">> Testing ..."
+                sleep 3
+            }   
+        }
+        stage('Package') {
+             steps {
+                echo ">> Packaging ..."
+                sleep 7
+            }   
+        }
+        */
+    }
+    
+    post {
+        always {
+            echo 'Holaaa !!!'
+        }
+    }
+}
